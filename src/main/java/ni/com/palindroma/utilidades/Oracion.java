@@ -1,45 +1,16 @@
 package ni.com.palindroma.utilidades;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
+
+import javax.swing.text.StyledEditorKit;
+
 public class Oracion {
-    public String palabraEnviada;
-    public boolean palabraPolindroma = false;
-    public String sCadenaInvertida;
-    public String getPalabraEnviada() {
-        return palabraEnviada;
-    }
-    public void setPalabraEnviada(String palabraEnviada) {
-        this.palabraEnviada = palabraEnviada;
-    }
-    public String getSCadenaInvertida() {
-        return sCadenaInvertida;
-    }
-    public void setSCadenaInvertida(String sCadenaInvertida) {
-        this.sCadenaInvertida = sCadenaInvertida;
-    }
-    public boolean getPalabraPolindroma() {
-        return palabraPolindroma;
-    }
-    public void setPalabraPolindroma(boolean palabraPolindroma) {
-        this.palabraPolindroma = palabraPolindroma;
-    }
+    private @Getter @Setter String palabraEnviada;
+    private @Getter @Setter boolean palabraPolindroma = false;
+    private @Getter @Setter String sCadenaInvertida;
 
-    public String averiguaTipoOracion() {
-        this.retornaReverso();
-        if(!(this.palabraEnviada== this.sCadenaInvertida)){
-            return "La palabra " + this.palabraEnviada + ", es una PALABRA POLINDROMA.......";
-        }else{
-            return "La palabra " + this.palabraEnviada + ",no es políndroma......." ;
-        }
-    }
-
-    public void MensajeResultado(){
-        if(this.palabraPolindroma) {
-            System.out.println("La palabra " + this.palabraEnviada + ", es una POLINDROMA.......");
-        }
-        else {
-            System.out.println("La palabra " + this.palabraEnviada + ",no es políndroma......." );
-        }
-    }
 
 
     public String getResultado(){
@@ -64,7 +35,16 @@ public class Oracion {
         }
     }
 
+    public static Boolean EsPalindroma(String cadena){
+        String cadenaInvertida = StringUtils.reverse(cadena);
+        cadenaInvertida = StringUtils.upperCase(cadenaInvertida).replaceAll(" ","");
+        cadena = StringUtils.upperCase(cadena).replaceAll(" ","");
+        return StringUtils.equals(cadena,cadenaInvertida);
+    }
+
     public void retornaReverso(){
+
+
         this.sCadenaInvertida="";
         for (int x=this.palabraEnviada.length()-1;x>=0;x--){
             this.sCadenaInvertida = this.sCadenaInvertida + this.palabraEnviada.charAt(x);
@@ -72,4 +52,10 @@ public class Oracion {
         String sCadenaTemporal = this.sCadenaInvertida.replace(" ","");
         this.sCadenaInvertida=sCadenaTemporal.toLowerCase();
     }
+
+    public static Boolean EsVerdadero(Boolean variable){
+        return variable==true;
+    }
+
+
 }
