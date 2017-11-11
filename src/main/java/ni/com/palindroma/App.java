@@ -1,4 +1,5 @@
 package ni.com.palindroma;
+import ni.com.palindroma.utilidades.Oracion;
 
 /**
  * Hello world!
@@ -6,8 +7,13 @@ package ni.com.palindroma;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+
+
+    public static void main(String[] args) {
+        Oracion averiguaOracion = new  Oracion("Se laminan animales");
+        String mensajeResultado = averiguaOracion.getResultado();
+        System.out.println(mensajeResultado);
     }
+
+
 }
